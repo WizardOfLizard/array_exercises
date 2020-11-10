@@ -12,6 +12,14 @@ let word = "Chunky"
 
 let otherWord = "Iowa"
 
+let palindrome = "tacocat"
+
+let sentence = "The quick brown fox jumped over the lazy dog"
+
+let simpleSentence = "Bob climbed a tree."
+
+let bigSentence = "I am the very model of a modern major general."
+
 function fillArray (length, value) {
     let fullArray = []
     for (i = 0;i < length;i ++) {
@@ -50,7 +58,7 @@ function compactArray (array) {
     console.log(compactedArray)
 }
 
-function compareArray (array) {
+function compareArrayMax (array) {
     let biggestNum = array[0]
     array.forEach(value => {
         if (biggestNum < value) {
@@ -58,6 +66,16 @@ function compareArray (array) {
         }
     });
     console.log(`The biggest number in the array is: ${biggestNum}`)
+}
+
+function compareArrayMin (array) {
+    let smallestNum = array[0]
+    array.forEach(value => {
+        if (smallestNum < value) {
+            smallestNum = value
+        }
+    });
+    console.log(`The biggest number in the array is: ${smallestNum}`)
 }
 
 function avgArray (array) {
@@ -106,13 +124,70 @@ function findVowel (word) {
     console.log(`The first vowel is ${firstVowel}, at index ${index}.`)
 }
 
+function reverseString (string) {
+    let output = []
+    for (i = 0;i < string.length;i ++) {
+        output[i] = string[string.length-i-1]
+    }
+    return output
+}
+
+function checkPalindrome (word) {
+    let isPalindrome = true
+    for (i = 0;i < word.length;i ++) {
+        if (word[i] !== word[word.length-i-1]) {
+            isPalindrome = false
+        }
+    }
+    return isPalindrome
+}
+
+function reverseWordsInSentence (sentence) {
+    let spaceLocations = []
+    let output = []
+    for (i = 0;i < sentence.length;i ++) {
+        if(sentence[i] === " ") {
+            spaceLocations.push(i)
+        } else if (i + 1 === sentence.length) {
+            spaceLocations.push(i + 1)
+        }
+        //console.log(`Checking index ${i} for a space.`)
+    }
+    //console.log(spaceLocations)
+    for (i = 0;i < spaceLocations.length;i ++) {
+        if (i === 0) {
+            for (j = 0;j < spaceLocations[i];j ++) {
+                output.push(sentence[spaceLocations[i]-j-1])
+                //console.log(`The starting value used is 0`)
+            }
+        } else {
+            for (j = 0;j < spaceLocations[i] - spaceLocations[i-1] - 1;j ++) {
+                output.push(sentence[spaceLocations[i]-j-1])
+                //console.log(`sL[i-1]=${spaceLocations[i-1]}`)
+                //console.log(`sL[i]=${spaceLocations[i]}`)
+                //console.log(`sL[i]-j-1=${spaceLocations[i]-j-1}`)
+                //console.log(`j=${j}`)
+                //console.log(`The starting value used is ${spaceLocations[i-1]}`)
+            }
+        }
+        if (i + 1 !== spaceLocations.length) {
+            output.push(" ")
+        }
+        //console.log(`${i}`)
+        //console.log(spaceLocations[0])
+        //console.log(spaceLocations[1])
+        //console.log(`Run ${i+1} times`)
+    }
+    return output
+}
+
 //fillArray(3, 'a')
 
 //reverseArray(testArray)
 
 //compactArray(expandedArray)
 
-//compareArray(testArray)
+//compareArrayMax(testArray)
 
 //avgArray(testArray)
 
@@ -121,5 +196,15 @@ function findVowel (word) {
 //findFavAnimal(zoo, "Cheeseburger")
 //findFavAnimal(zoo, "Pizza")
 
-findVowel(word)
-findVowel(otherWord)
+//findVowel(word)
+//findVowel(otherWord)
+
+//console.log(reverseString(word))
+
+//checkPalindrome(word)
+
+//checkPalindrome(palindrome)
+
+//console.log(reverseWordsInSentence(simpleSentence))
+
+//console.log(reverseWordsInSentence(bigSentence))
