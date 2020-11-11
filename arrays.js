@@ -24,9 +24,9 @@ function fillArray (length, value) {
     let fullArray = []
     for (i = 0;i < length;i ++) {
         fullArray.push(value)
-        console.log("Pushing value")
+        //console.log("Pushing value")
     }
-    console.log(fullArray)
+    return fullArray
 }
 
 function reverseArray (array) {
@@ -35,7 +35,7 @@ function reverseArray (array) {
         //console.log(`Selected number: ${array.length - value - 1}`)
         return array[array.length - value - 1]
     })
-    console.log(revertedArray)
+    return revertedArray
 }
 
 function compactArray (array) {
@@ -55,7 +55,7 @@ function compactArray (array) {
             return true
         }
     })
-    console.log(compactedArray)
+    return compactedArray
 }
 
 function compareArrayMax (array) {
@@ -65,7 +65,7 @@ function compareArrayMax (array) {
             biggestNum = value
         }
     });
-    console.log(`The biggest number in the array is: ${biggestNum}`)
+    return biggestNum
 }
 
 function compareArrayMin (array) {
@@ -75,7 +75,7 @@ function compareArrayMin (array) {
             smallestNum = value
         }
     });
-    console.log(`The biggest number in the array is: ${smallestNum}`)
+    return smallestNum
 }
 
 function avgArray (array) {
@@ -83,7 +83,7 @@ function avgArray (array) {
     array.forEach(value => {
         totArray += value
     })
-    console.log(`The average of all the array values is: ${totArray/array.length}`)
+    return totArray/array.length
 }
 
 function countOdd (array) {
@@ -93,7 +93,7 @@ function countOdd (array) {
             oddCount ++
         }
     })
-    console.log(`There are ${oddCount} odd numbers in the array.`)
+    return oddCount
 }
 
 function findFavAnimal (array, favorite) {
@@ -103,11 +103,7 @@ function findFavAnimal (array, favorite) {
             isFavorite = true
         }
     })
-    if (isFavorite) {
-        console.log(`There is a ${favorite} in the zoo!`)
-    } else {
-        console.log(`There isn't a ${favorite} in the zoo.`)
-    }
+    return isFavorite
 }
 
 function findVowel (word) {
@@ -121,7 +117,7 @@ function findVowel (word) {
             }
         }
     }
-    console.log(`The first vowel is ${firstVowel}, at index ${index}.`)
+    return index
 }
 
 function reverseString (string) {
@@ -181,30 +177,3 @@ function reverseWordsInSentence (sentence) {
     return output
 }
 
-//fillArray(3, 'a')
-
-//reverseArray(testArray)
-
-//compactArray(expandedArray)
-
-//compareArrayMax(testArray)
-
-//avgArray(testArray)
-
-//countOdd(testArray)
-
-//findFavAnimal(zoo, "Cheeseburger")
-//findFavAnimal(zoo, "Pizza")
-
-//findVowel(word)
-//findVowel(otherWord)
-
-//console.log(reverseString(word))
-
-//checkPalindrome(word)
-
-//checkPalindrome(palindrome)
-
-//console.log(reverseWordsInSentence(simpleSentence))
-
-//console.log(reverseWordsInSentence(bigSentence))
