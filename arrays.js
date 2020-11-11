@@ -1,8 +1,12 @@
 
 
-console.log("Hello world.")
+//console.log("Hello world.")
 
 let testArray = [1, 2, 3, 4, 5, 6]
+
+let testArray2 = [10, 5, 1, 10, 7]
+
+let testArray3 = [0, -99, 88, 444, -100, -100, 444]
 
 let expandedArray = [0, 1, false, 2, undefined, '', 3, null]
 
@@ -19,6 +23,8 @@ let sentence = "The quick brown fox jumped over the lazy dog"
 let simpleSentence = "Bob climbed a tree."
 
 let bigSentence = "I am the very model of a modern major general."
+
+let temps = [32, 100, -32, 10]
 
 function fillArray (length, value) {
     let fullArray = []
@@ -60,6 +66,7 @@ function compactArray (array) {
 
 function compareArrayMax (array) {
     let biggestNum = array[0]
+    //console.log("Finding biggest number.")
     array.forEach(value => {
         if (biggestNum < value) {
             biggestNum = value
@@ -70,8 +77,9 @@ function compareArrayMax (array) {
 
 function compareArrayMin (array) {
     let smallestNum = array[0]
+    //console.log("Finding smallest number.")
     array.forEach(value => {
-        if (smallestNum < value) {
+        if (smallestNum > value) {
             smallestNum = value
         }
     });
@@ -177,3 +185,61 @@ function reverseWordsInSentence (sentence) {
     return output
 }
 
+function fahToCel (array) {
+    let output = array.map(value => {
+        return (value - 32) * 5 / 9
+    })
+    return output
+}
+
+function bigToSmallDist (array) {
+    let biggest = compareArrayMax(array)
+    let smallest = compareArrayMin(array)
+    let bigLocations = []
+    let smallLocations = []
+    let dist = 0
+    array.forEach((value, index) => {
+        if(value === biggest) {
+            bigLocations.push(index)
+        }
+    })
+    array.forEach((value, index)=> {
+        if(value === smallest) {
+            smallLocations.push(index)
+        }
+    })
+    bigLocations.forEach(i => {
+        //console.log("help.")
+        smallLocations.forEach(j => {
+            //console.log("double help.")
+            //console.log(i)
+            //console.log(j)
+            //console.log(Math.abs(i-j))
+            if (Math.abs(i-j) > dist) {
+                dist = Math.abs(i-j)
+                //console.log(`Comparing ${i} and ${j}.`)
+            }
+        })
+    })
+    return dist
+}
+
+function countFiveDiv (array) {
+    let fiveDivCount = 0
+    array.forEach(value => {
+        if (value % 5 === 0) {
+            fiveDivCount ++
+        }
+    })
+    return fiveDivCount
+}
+
+function countVowels (string) {
+    let vowelCount = 0
+    for (i = 0;i < string.length;i ++) {
+        if (string[i] === "a" || string[i] === "e" || string[i] === "i" || string[i] === "o" || string[i] === "u" || string[i] === "A" || string[i] === "E" || string[i] === "I" || string[i] === "O" || string[i] === "U") {
+            vowelCount ++
+        }
+    }
+    return vowelCount
+}
