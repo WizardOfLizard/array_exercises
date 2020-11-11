@@ -1,6 +1,5 @@
 
 
-//console.log("Hello world.")
 
 let testArray = [1, 2, 3, 4, 5, 6]
 
@@ -30,7 +29,6 @@ function fillArray (length, value) {
     let fullArray = []
     for (i = 0;i < length;i ++) {
         fullArray.push(value)
-        //console.log("Pushing value")
     }
     return fullArray
 }
@@ -38,7 +36,6 @@ function fillArray (length, value) {
 function reverseArray (array) {
     console.log(array)
     let revertedArray = array.map((number, value) => {
-        //console.log(`Selected number: ${array.length - value - 1}`)
         return array[array.length - value - 1]
     })
     return revertedArray
@@ -66,7 +63,6 @@ function compactArray (array) {
 
 function compareArrayMax (array) {
     let biggestNum = array[0]
-    //console.log("Finding biggest number.")
     array.forEach(value => {
         if (biggestNum < value) {
             biggestNum = value
@@ -77,7 +73,6 @@ function compareArrayMax (array) {
 
 function compareArrayMin (array) {
     let smallestNum = array[0]
-    //console.log("Finding smallest number.")
     array.forEach(value => {
         if (smallestNum > value) {
             smallestNum = value
@@ -155,33 +150,30 @@ function reverseWordsInSentence (sentence) {
         } else if (i + 1 === sentence.length) {
             spaceLocations.push(i + 1)
         }
-        //console.log(`Checking index ${i} for a space.`)
     }
-    //console.log(spaceLocations)
     for (i = 0;i < spaceLocations.length;i ++) {
         if (i === 0) {
             for (j = 0;j < spaceLocations[i];j ++) {
                 output.push(sentence[spaceLocations[i]-j-1])
-                //console.log(`The starting value used is 0`)
             }
         } else {
             for (j = 0;j < spaceLocations[i] - spaceLocations[i-1] - 1;j ++) {
                 output.push(sentence[spaceLocations[i]-j-1])
-                //console.log(`sL[i-1]=${spaceLocations[i-1]}`)
-                //console.log(`sL[i]=${spaceLocations[i]}`)
-                //console.log(`sL[i]-j-1=${spaceLocations[i]-j-1}`)
-                //console.log(`j=${j}`)
-                //console.log(`The starting value used is ${spaceLocations[i-1]}`)
             }
         }
         if (i + 1 !== spaceLocations.length) {
             output.push(" ")
         }
-        //console.log(`${i}`)
-        //console.log(spaceLocations[0])
-        //console.log(spaceLocations[1])
-        //console.log(`Run ${i+1} times`)
     }
+    return output
+}
+
+function altReverseWordsInSentence (sentence) {
+    let splitString = sentence.split(" ")
+    let revWords = splitString.map(word => {
+        return reverseString (word)
+    })
+    let output = revWords.join(" ")
     return output
 }
 
@@ -209,15 +201,9 @@ function bigToSmallDist (array) {
         }
     })
     bigLocations.forEach(i => {
-        //console.log("help.")
         smallLocations.forEach(j => {
-            //console.log("double help.")
-            //console.log(i)
-            //console.log(j)
-            //console.log(Math.abs(i-j))
             if (Math.abs(i-j) > dist) {
                 dist = Math.abs(i-j)
-                //console.log(`Comparing ${i} and ${j}.`)
             }
         })
     })
